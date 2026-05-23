@@ -1,0 +1,58 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Lead {
+  id              String   @id @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  // Contact info
+  ownerName       String
+  phone           String
+  email           String?
+  address         String
+  city            String  @default("Cleveland")
+  state           String  @default("OH")
+  zip             String?
+
+  // Lead details
+  stage           String  @default("new")
+  motivation      String?
+  askingPrice     Float?
+  condition       String?
+  timeline        String?
+  source          String?
+
+  // Property data (from RentCast)
+  beds            Int?
+  baths           Float?
+  sqft            Int?
+  yearBuilt       Int?
+  estimatedValue  Float?
+  arv             Float?
+
+  // Offer calc
+  repairCost      Float?
+  maxOffer        Float?
+  ourOffer        Float?
+
+  // Follow-up
+  callbackDate    DateTime?
+  lastContacted   DateTime?
+  priority        String  @default("medium")
+
+  notes           Note[]
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  content   String
+  leadId    String
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+}
