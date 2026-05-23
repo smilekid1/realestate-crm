@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest, ctx: RouteContext<"/api/leads/[id]/notes">) {
   const { id } = await ctx.params;
   const { content } = await req.json();

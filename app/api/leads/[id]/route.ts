@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export async function GET(_req: NextRequest, ctx: RouteContext<"/api/leads/[id]">) {
   const { id } = await ctx.params;
   const lead = await prisma.lead.findUnique({
