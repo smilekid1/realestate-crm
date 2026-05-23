@@ -4,7 +4,8 @@ export async function GET() {
   const leads = await prisma.lead.findMany({ orderBy: { createdAt: "desc" } });
 
   const headers = ["Name", "Phone", "Email", "Address", "City", "State", "ZIP", "Stage", "Motivation", "Condition", "Timeline", "Asking Price", "Our Offer", "ARV", "Max Offer", "Repair Cost", "Priority", "Callback Date", "Created"];
-  const rows = leads.map((l) => [
+  type Lead = typeof leads[number];
+  const rows = leads.map((l: Lead) => [
     l.ownerName, l.phone, l.email || "", l.address, l.city, l.state, l.zip || "",
     l.stage, l.motivation || "", l.condition || "", l.timeline || "",
     l.askingPrice ?? "", l.ourOffer ?? "", l.arv ?? "", l.maxOffer ?? "", l.repairCost ?? "",
