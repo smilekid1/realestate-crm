@@ -5,7 +5,7 @@ import "./globals.css";
 const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
 
 export const metadata: Metadata = {
-  title: "Cleveland REI CRM",
+  title: "Flipped It Doley CRM",
   description: "Real Estate Investor Lead Manager",
 };
 
@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${geist.variable} h-full`}>
       <body className="min-h-full bg-gray-50 text-gray-900 antialiased">
         <nav className="bg-slate-900 text-white px-6 py-3 flex items-center gap-6 shadow">
-          <span className="font-bold text-lg tracking-tight">Cleveland REI</span>
+          <span className="font-bold text-lg tracking-tight">Flipped It Doley CRM</span>
           <a href="/today" className="text-slate-300 hover:text-white text-sm transition-colors">Today</a>
           <a href="/" className="text-slate-300 hover:text-white text-sm transition-colors">Pipeline</a>
           <a href="/revival" className="text-slate-300 hover:text-white text-sm transition-colors">Revival</a>
